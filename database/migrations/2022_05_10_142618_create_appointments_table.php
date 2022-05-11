@@ -15,10 +15,15 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->date('date');  
             $table->foreignId('user_id')->constrained();
             $table->foreignId('timeslots_id')->constrained();
+            $table->dateTime('start_at');
+            $table->dateTime('finish_at');
             $table->timestamps();
+        });
+        Schema::create('appointment_treatment', function (Blueprint $table){
+            $table->foreignId('appointment_id')->constrained();
+            $table->foreignId('treatment_id')->constrained();
         });
     }
 

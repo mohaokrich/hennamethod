@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('title_slug')->unique();
             $table->longText('body');
-            $table->string('author');
+            $table->string('author')->default('Henna Method');
             $table->date('post_creation');
             $table->longText('excerpt')->nullable();
             $table->timestamps();

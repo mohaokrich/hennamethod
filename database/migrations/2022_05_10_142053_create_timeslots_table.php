@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->id();
-            $table->string('start_time');
-            $table->string('end_time');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
