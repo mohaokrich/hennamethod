@@ -11,6 +11,8 @@ import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
 const form = useForm({
     name: '',
     email: '',
+    phone: '',
+    last_name: '',
     password: '',
     password_confirmation: '',
     terms: false,
@@ -44,6 +46,32 @@ const submit = () => {
                     required
                     autofocus
                     autocomplete="name"
+                />
+            </div>
+
+            <div>
+                <JetLabel for="last_name" value="Last name" />
+                <JetInput
+                    id="last_name"
+                    v-model="form.last_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                    autocomplete="last_name"
+                />
+            </div>
+
+            <div>
+                <JetLabel for="phone" value="Phone" />
+                <JetInput
+                    id="phone"
+                    v-model="form.phone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                    autocomplete="phone"
                 />
             </div>
 

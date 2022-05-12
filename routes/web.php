@@ -24,7 +24,7 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+/* USER ZONE */
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -34,11 +34,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/test', function () {
-        return Inertia::render('Test', [
-            'is_admin' => 1
-        ]);
-    })->name('test');
 });
 
 /* ADMIN ZONE */
@@ -51,4 +46,10 @@ Route::middleware([
     Route::get('/users', function () {
         return Inertia::render('Dashboard');
     })->name('users');
+
+    Route::get('/test', function () {
+        return Inertia::render('Test', [
+            'is_admin' => 1
+        ]);
+    })->name('test');
 });
