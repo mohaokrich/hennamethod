@@ -97,7 +97,7 @@ const logout = () => {
                                             Usuario
                                         </div>
                                         <JetDropdownLink :href="route('login')">
-                                            Entrar
+                                            Iniciar Sesión
                                         </JetDropdownLink>
                                         <div class="border-t border-gray-100" />
                                         <JetDropdownLink :href="route('register')">
@@ -246,7 +246,7 @@ const logout = () => {
 
                         <div class="mt-3 space-y-1">
                             <JetResponsiveNavLink :href="route('login')">
-                                Entrar
+                                Iniciar Sesión
                             </JetResponsiveNavLink>
                             <JetResponsiveNavLink :href="route('register')">
                                 Registrarse
