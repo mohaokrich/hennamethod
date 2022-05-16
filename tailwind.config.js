@@ -14,11 +14,11 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            screens: {
+                'mobile': '350px',
+                // => @media (min-width: 350px) { ... }
+            },
         },
-        // screens: {
-        //     'movile': { 'min': '350px' },
-        //     // => @media (min-width: 350px) { ... }
-        // },
     },
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

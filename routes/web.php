@@ -30,6 +30,31 @@ Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
+Route::get('/tratamientos', function () {
+    return Inertia::render('Home');
+})->name('tratamientos');
+
+Route::get('/blog', function () {
+    return Inertia::render('Home');
+})->name('blog');
+
+Route::get('/nosotros', function () {
+    return Inertia::render('Home');
+})->name('nosotros');
+
+Route::get('/contacto', function () {
+    return Inertia::render('Home');
+})->name('contacto');
+
+Route::get('/faqs', function () {
+    return Inertia::render('Home');
+})->name('faqs');
+
+Route::get('/aviso-legal', function () {
+    return Inertia::render('Home');
+})->name('aviso-legal');
+
+
 
 /* USER ZONE */
 Route::middleware([
