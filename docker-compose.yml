@@ -1,0 +1,42 @@
+version: '3.1'
+services:
+  db:
+      image: mysql
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+              MYSQL_DATABASE: henna_method
+              MYSQL_ROOT_PASSWORD: root
+              MYSQL_USER: moha
+              MYSQL_PASSWORD: root
+      ports:
+              - "3306:3306"
+      volumes:
+              #- ./dump:/docker-entrypoint-initdb.d
+              - ./mysql/schemas:/var/lib/mysql
+      networks:
+              - default
+  laravel-prod:
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      ports:
+        - 8300:80
+      volumes:
+        - ./hennamethod:/var/www/html
+      depends_on:
+        - db
+      networks:
+        - default
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+        - db:db
+    ports:
+        - 8000:80
+    environment:
+        MYSQL_USER: moha
+        MYSQL_PASSWORD: root
+        MYSQL_ROOT_PASSWORD: root
+
+volumes:
+    persistent:

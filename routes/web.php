@@ -15,15 +15,22 @@ use Illuminate\Foundation\Application;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/* USER ZONE */
+// Route::middleware([
+//     'canLogin' => Route::has('login'),
+//     'canRegister' => Route::has('register'),
+//     'laravelVersion' => Application::VERSION,
+//     'phpVersion' => PHP_VERSION,
+// ])->group(function () {
+//     Route::get('/', function () {
+//         return Inertia::render('Home');
+//     });
+// });
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return Inertia::render('Home');
+})->name('home');
+
+
 /* USER ZONE */
 Route::middleware([
     'auth:sanctum',

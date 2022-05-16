@@ -83,53 +83,30 @@ const clearPhotoFileInput = () => {
 
         <template #form>
             <!-- Profile Photo -->
-            <div
-                v-if="$page.props.jetstream.managesProfilePhotos"
-                class="col-span-6 sm:col-span-4"
-            >
+            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
-                <input
-                    ref="photoInput"
-                    type="file"
-                    class="hidden"
-                    @change="updatePhotoPreview"
-                />
+                <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview" />
 
                 <JetLabel for="photo" value="Photo" />
 
                 <!-- Current Profile Photo -->
                 <div v-show="!photoPreview" class="mt-2">
-                    <img
-                        :src="user.profile_photo_url"
-                        :alt="user.name"
-                        class="rounded-full h-20 w-20 object-cover"
-                    />
+                    <img :src="user.profile_photo_url" :alt="user.name" class="rounded-full h-20 w-20 object-cover" />
                 </div>
 
                 <!-- New Profile Photo Preview -->
                 <div v-show="photoPreview" class="mt-2">
-                    <span
-                        class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                        :style="
-                            'background-image: url(\'' + photoPreview + '\');'
-                        "
-                    />
+                    <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center" :style="
+                        'background-image: url(\'' + photoPreview + '\');'
+                    " />
                 </div>
 
-                <JetSecondaryButton
-                    class="mt-2 mr-2"
-                    type="button"
-                    @click.prevent="selectNewPhoto"
-                >
+                <JetSecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
                     Select A New Photo
                 </JetSecondaryButton>
 
-                <JetSecondaryButton
-                    v-if="user.profile_photo_path"
-                    type="button"
-                    class="mt-2"
-                    @click.prevent="deletePhoto"
-                >
+                <JetSecondaryButton v-if="user.profile_photo_path" type="button" class="mt-2"
+                    @click.prevent="deletePhoto">
                     Remove Photo
                 </JetSecondaryButton>
 
@@ -139,46 +116,25 @@ const clearPhotoFileInput = () => {
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <JetLabel for="name" value="Name" />
-                <JetInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    autocomplete="name"
-                />
+                <JetInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" autocomplete="name" />
                 <JetInputError :message="form.errors.name" class="mt-2" />
             </div>
             <!-- Last_name -->
             <div class="col-span-6 sm:col-span-4">
                 <JetLabel for="last_name" value="Last Name" />
-                <JetInput
-                    id="last_name"
-                    v-model="form.last_name"
-                    type="last_name"
-                    class="mt-1 block w-full"
-                />
+                <JetInput id="last_name" v-model="form.last_name" type="last_name" class="mt-1 block w-full" />
                 <JetInputError :message="form.errors.email" class="mt-2" />
             </div>
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <JetLabel for="email" value="Email" />
-                <JetInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                />
+                <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" />
                 <JetInputError :message="form.errors.email" class="mt-2" />
             </div>
             <!-- Phone -->
             <div class="col-span-6 sm:col-span-4">
                 <JetLabel for="phone" value="Phone" />
-                <JetInput
-                    id="phone"
-                    v-model="form.phone"
-                    type="phone"
-                    class="mt-1 block w-full"
-                />
+                <JetInput id="phone" v-model="form.phone" type="phone" class="mt-1 block w-full" />
                 <JetInputError :message="form.errors.email" class="mt-2" />
             </div>
         </template>
@@ -188,10 +144,7 @@ const clearPhotoFileInput = () => {
                 Saved.
             </JetActionMessage>
 
-            <JetButton
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-            >
+            <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
             </JetButton>
         </template>
