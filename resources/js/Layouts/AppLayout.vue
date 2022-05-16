@@ -330,12 +330,12 @@ const logout = () => {
                     </div>
                     <div class="mt-8 md:mt-0 md:order-2">
                         <p class="text-center text-base text-gray-400">&copy; 2022 Henna Method. All rights reserved |
-                            <a class="font-extrabold text-gray-300" :href="route('aviso-legal')">Aviso legal</a>
+                            <Link class="font-extrabold text-gray-300" :href="route('aviso-legal')">Aviso legal</Link>
                         </p>
                     </div>
                     <div class="mt-8 md:mt-0 md:order-3">
                         <p class="text-center text-base text-gray-400">Desarrollado por <a
-                                class="font-extrabold text-gray-300"
+                                class="font-extrabold text-gray-300" target="_blank"
                                 href="https://github.com/mohaokrich">@Mohaokrich</a>
                         </p>
                     </div>
