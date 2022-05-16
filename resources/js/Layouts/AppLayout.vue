@@ -62,7 +62,7 @@ const logout = () => {
                                         </div>
 
                                         <JetDropdownLink :href="route('profile.show')">
-                                            Profile
+                                            Perfil
                                         </JetDropdownLink>
 
                                         <!-- <JetDropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
@@ -74,7 +74,7 @@ const logout = () => {
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <JetDropdownLink as="button">
-                                                Log Out
+                                                Salir
                                             </JetDropdownLink>
                                         </form>
                                     </template>
@@ -233,7 +233,7 @@ const logout = () => {
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <JetResponsiveNavLink as="button">
-                                    Cerrar Sesión
+                                    Salir
                                 </JetResponsiveNavLink>
                             </form>
                         </div>
