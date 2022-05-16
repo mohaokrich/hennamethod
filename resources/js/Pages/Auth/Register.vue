@@ -38,19 +38,19 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <JetLabel for="name" value="Name" />
+                <JetLabel for="name" value="Nombre" />
                 <JetInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" required autofocus
                     autocomplete="name" />
             </div>
 
-            <div>
-                <JetLabel for="last_name" value="Last name" />
+            <div class="mt-4">
+                <JetLabel for="last_name" value="Apellido" />
                 <JetInput id="last_name" v-model="form.last_name" type="text" class="mt-1 block w-full" required
                     autofocus autocomplete="last_name" />
             </div>
 
-            <div>
-                <JetLabel for="phone" value="Phone" />
+            <div class="mt-4">
+                <JetLabel for="phone" value="Teléfono" />
                 <JetInput id="phone" v-model="form.phone" type="text" class="mt-1 block w-full" required autofocus
                     autocomplete="phone" />
             </div>
@@ -61,13 +61,13 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password" value="Password" />
+                <JetLabel for="password" value="Contraseña" />
                 <JetInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
                     autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <JetLabel for="password_confirmation" value="Confirm Password" />
+                <JetLabel for="password_confirmation" value="Confirmar contraseña" />
                 <JetInput id="password_confirmation" v-model="form.password_confirmation" type="password"
                     class="mt-1 block w-full" required autocomplete="new-password" />
             </div>
@@ -89,11 +89,11 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                Already registered?
+                ¿Ya estas registrado?
                 </Link>
 
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    Registrarse
                 </JetButton>
             </div>
         </form>
