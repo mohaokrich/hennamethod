@@ -26,6 +26,7 @@ const submit = () => {
 </script>
 
 <template>
+
     <Head title="Register" />
 
     <JetAuthenticationCard>
@@ -38,76 +39,37 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div>
                 <JetLabel for="name" value="Name" />
-                <JetInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+                <JetInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" required autofocus
+                    autocomplete="name" />
             </div>
 
             <div>
                 <JetLabel for="last_name" value="Last name" />
-                <JetInput
-                    id="last_name"
-                    v-model="form.last_name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="last_name"
-                />
+                <JetInput id="last_name" v-model="form.last_name" type="text" class="mt-1 block w-full" required
+                    autofocus autocomplete="last_name" />
             </div>
 
             <div>
                 <JetLabel for="phone" value="Phone" />
-                <JetInput
-                    id="phone"
-                    v-model="form.phone"
-                    type="text"
-                    class="mt-1 block w-full"
-                    required
-                    autofocus
-                    autocomplete="phone"
-                />
+                <JetInput id="phone" v-model="form.phone" type="text" class="mt-1 block w-full" required autofocus
+                    autocomplete="phone" />
             </div>
 
             <div class="mt-4">
                 <JetLabel for="email" value="Email" />
-                <JetInput
-                    id="email"
-                    v-model="form.email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    required
-                />
+                <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" required />
             </div>
 
             <div class="mt-4">
                 <JetLabel for="password" value="Password" />
-                <JetInput
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
+                <JetInput id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
+                    autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <JetLabel for="password_confirmation" value="Confirm Password" />
-                <JetInput
-                    id="password_confirmation"
-                    v-model="form.password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    required
-                    autocomplete="new-password"
-                />
+                <JetInput id="password_confirmation" v-model="form.password_confirmation" type="password"
+                    class="mt-1 block w-full" required autocomplete="new-password" />
             </div>
 
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
@@ -116,7 +78,10 @@ const submit = () => {
                         <JetCheckbox id="terms" v-model:checked="form.terms" name="terms" />
 
                         <div class="ml-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
+                            I agree to the <a target="_blank" :href="route('terms.show')"
+                                class="underline text-sm text-gray-600 hover:text-gray-900">Terms of Service</a> and <a
+                                target="_blank" :href="route('policy.show')"
+                                class="underline text-sm text-gray-600 hover:text-gray-900">Privacy Policy</a>
                         </div>
                     </div>
                 </JetLabel>
@@ -124,7 +89,7 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                Already registered?
                 </Link>
 
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">

@@ -15,7 +15,10 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+        // screens: {
+        //     'movile': { 'min': '350px' },
+        //     // => @media (min-width: 350px) { ... }
+        // },
     },
-
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };
