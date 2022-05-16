@@ -1104,12 +1104,6 @@ select {
 .h-20 {
   height: 5rem;
 }
-.h-screen {
-  height: 100vh;
-}
-.h-2 {
-  height: 0.5rem;
-}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1172,9 +1166,6 @@ select {
 }
 .max-w-6xl {
   max-width: 72rem;
-}
-.max-w-full {
-  max-width: 100%;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1371,14 +1362,6 @@ select {
 .border-gray-400 {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}
-.border-black {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-.border-gray-700 {
-  --tw-border-opacity: 1;
-  border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 .border-gray-500 {
   --tw-border-opacity: 1;
@@ -2135,12 +2118,6 @@ select {
     justify-content: space-between;
   }
 
-  .sm\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(4rem * var(--tw-space-x-reverse));
-    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
   .sm\:rounded-lg {
     border-radius: 0.5rem;
   }
@@ -2261,11 +2238,6 @@ select {
   .md\:border-l {
     border-left-width: 1px;
   }
-
-  .md\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-  }
 }
 @media (min-width: 1024px) {
 
@@ -2280,18 +2252,9 @@ select {
 }
 @media (min-width: 350px) {
 
-  .mobile\:mx-16 {
-    margin-left: 4rem;
-    margin-right: 4rem;
-  }
-
   .mobile\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
-  }
-
-  .mobile\:mr-16 {
-    margin-right: 4rem;
   }
 
   .mobile\:flex {
@@ -2300,18 +2263,6 @@ select {
 
   .mobile\:hidden {
     display: none;
-  }
-
-  .mobile\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(4rem * var(--tw-space-x-reverse));
-    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .mobile\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(2rem * var(--tw-space-x-reverse));
-    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
   }
 }
 
