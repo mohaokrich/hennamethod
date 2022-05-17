@@ -990,6 +990,12 @@ select {
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1214,9 +1220,6 @@ select {
 }
 .max-w-lg {
   max-width: 32rem;
-}
-.max-w-5xl {
-  max-width: 64rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1497,17 +1500,23 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
-.bg-green-100 {
+.bg-\[\#395c00\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+  background-color: rgb(57 92 0 / var(--tw-bg-opacity));
 }
-.bg-green-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+.bg-transparent {
+  background-color: transparent;
 }
-.bg-green-50 {
+.bg-current {
+  background-color: currentColor;
+}
+.bg-slate-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(240 253 244 / var(--tw-bg-opacity));
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+.bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
@@ -1643,11 +1652,11 @@ select {
 .pb-2 {
   padding-bottom: 0.5rem;
 }
-.pr-2 {
-  padding-right: 0.5rem;
-}
 .pl-2 {
   padding-left: 0.5rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
 }
 .pt-16 {
   padding-top: 4rem;

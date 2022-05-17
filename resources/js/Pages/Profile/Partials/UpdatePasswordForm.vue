@@ -40,11 +40,11 @@ const updatePassword = () => {
 <template>
     <JetFormSection @submitted="updatePassword">
         <template #title>
-            Update Password
+            Cambiar contraseña
         </template>
 
         <template #description>
-            Ensure your account is using a long, random password to stay secure.
+            Escoge una contraseña larga para tener mas seguridad.
         </template>
 
         <template #form>
@@ -89,11 +89,11 @@ const updatePassword = () => {
 
         <template #actions>
             <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Guardado.
             </JetActionMessage>
 
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+                Guardar
             </JetButton>
         </template>
     </JetFormSection>
