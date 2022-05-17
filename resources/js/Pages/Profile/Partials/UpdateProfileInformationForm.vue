@@ -75,15 +75,15 @@ const clearPhotoFileInput = () => {
 
 <template>
     <JetFormSection @submitted="updateProfileInformation">
-        <template #title> Profile Information </template>
+        <template #title> Configuración del perfil </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            Modifica tus datos personales.
         </template>
 
         <template #form>
             <!-- Profile Photo -->
-            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
+            <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-2 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview" />
 
@@ -114,38 +114,38 @@ const clearPhotoFileInput = () => {
             </div>
 
             <!-- Name -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-1 sm:col-span-4">
                 <JetLabel for="name" value="Name" />
                 <JetInput id="name" v-model="form.name" type="text" class="mt-1 block w-full" autocomplete="name" />
                 <JetInputError :message="form.errors.name" class="mt-2" />
             </div>
             <!-- Last_name -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-1 sm:col-span-4">
                 <JetLabel for="last_name" value="Last Name" />
                 <JetInput id="last_name" v-model="form.last_name" type="last_name" class="mt-1 block w-full" />
-                <JetInputError :message="form.errors.email" class="mt-2" />
+                <JetInputError :message="form.errors.last_name" class="mt-2" />
             </div>
             <!-- Email -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-1 sm:col-span-4">
                 <JetLabel for="email" value="Email" />
                 <JetInput id="email" v-model="form.email" type="email" class="mt-1 block w-full" />
-                <JetInputError :message="form.errors.email" class="mt-2" />
+                <JetInputError :message="form.errors.last_name" class="mt-2" />
             </div>
             <!-- Phone -->
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-1 sm:col-span-4">
                 <JetLabel for="phone" value="Phone" />
                 <JetInput id="phone" v-model="form.phone" type="phone" class="mt-1 block w-full" />
-                <JetInputError :message="form.errors.email" class="mt-2" />
+                <JetInputError :message="form.errors.last_name" class="mt-2" />
             </div>
         </template>
 
         <template #actions>
             <JetActionMessage :on="form.recentlySuccessful" class="mr-3">
-                Saved.
+                Guardado.
             </JetActionMessage>
 
             <JetButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Save
+                Guardar
             </JetButton>
         </template>
     </JetFormSection>
