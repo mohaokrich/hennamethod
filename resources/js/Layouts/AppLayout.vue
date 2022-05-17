@@ -34,11 +34,11 @@ const logout = () => {
         </header> -->
         <header class="bg-white shadow">
             <div class="content-center max-w-7xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
-                <img class="mx-auto" src="/img/logo-hm-inkfree-leaf.svg" alt="logo-brand">
+                <img class="mx-auto" src="/img/logo-hm-inkfree-madrid.svg" alt="logo-brand">
             </div>
         </header>
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100 py-10">
+            <nav class="bg-white border-b border-gray-100 pb-10">
                 <!-- Primary Navigation Menu -->
                 <div class="flex justify-center max-w-7xl mx-auto">
 
@@ -108,7 +108,7 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden mobile:flex mt-2 flex-wrap justify-center items-center">
+                            <div class="hidden mobile:flex mt-2 flex-wrap justify-center items-center mx-16">
                                 <JetNavLink class="mobile:mx-8" :href="route('home')" :active="route().current('home')">
                                     Inicio
                                 </JetNavLink>
@@ -175,12 +175,11 @@ const logout = () => {
                 <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }"
                     class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <JetResponsiveNavLink  :href="route('home')" :active="route().current('home')">
+                        <JetResponsiveNavLink :href="route('home')" :active="route().current('home')">
                             Inicio
                         </JetResponsiveNavLink>
 
-                        <JetResponsiveNavLink  :href="route('tratamientos')"
-                            :active="route().current('tratamientos')">
+                        <JetResponsiveNavLink :href="route('tratamientos')" :active="route().current('tratamientos')">
                             Tratamientos
                         </JetResponsiveNavLink>
 
@@ -192,7 +191,7 @@ const logout = () => {
                             Nosotros
                         </JetResponsiveNavLink>
 
-                        <JetResponsiveNavLink  :href="route('contacto')" :active="route().current('contacto')">
+                        <JetResponsiveNavLink :href="route('contacto')" :active="route().current('contacto')">
                             Contacto
                         </JetResponsiveNavLink>
 
@@ -280,7 +279,7 @@ const logout = () => {
             <main>
                 <slot />
             </main>
-            <!-- Footer -->
+            <!-- Footer fixed max-w-full inset-x-0 bottom-0 -->
             <footer class="bg-black">
                 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
                     <div class="flex justify-center space-x-6 md:order-1">

@@ -12,9 +12,9 @@ import Welcome from '@/Pages/Public/Welcome.vue'
             </h2>
         </template>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="py-12" style="background:url('/img/tropical-leaves-dry-bottom.png') left bottom no-repeat, url('/img/tropical-leaves-dry-top.png') left top no-repeat, url('/img/lamps-hanging-right.png') right top no-repeat; background-size: 25%;">
+            <div class="max-w-screen-xl mx-auto px-8 md:px-2" >
+                <div class="">
                     <Welcome />
                 </div>
             </div>

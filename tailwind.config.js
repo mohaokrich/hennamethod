@@ -18,6 +18,9 @@ module.exports = {
                 'mobile': '350px',
                 // => @media (min-width: 350px) { ... }
             },
+            height: {
+                '128': '32rem',
+            }
         },
     },
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
