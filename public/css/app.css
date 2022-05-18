@@ -987,6 +987,12 @@ select {
 .z-40 {
   z-index: 40;
 }
+.z-10 {
+  z-index: 10;
+}
+.z-30 {
+  z-index: 30;
+}
 .col-span-6 {
   grid-column: span 6 / span 6;
 }
@@ -1131,6 +1137,9 @@ select {
 .h-20 {
   height: 5rem;
 }
+.h-1\/3 {
+  height: 33.333333%;
+}
 .h-128 {
   height: 32rem;
 }
@@ -1139,9 +1148,6 @@ select {
 }
 .h-1 {
   height: 0.25rem;
-}
-.h-1\/3 {
-  height: 33.333333%;
 }
 .h-48 {
   height: 12rem;
@@ -1221,6 +1227,9 @@ select {
 .max-w-lg {
   max-width: 32rem;
 }
+.max-w-screen-2xl {
+  max-width: 1536px;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1290,6 +1299,9 @@ select {
 .content-center {
   align-content: center;
 }
+.items-end {
+  align-items: flex-end;
+}
 .items-center {
   align-items: center;
 }
@@ -1316,6 +1328,9 @@ select {
 }
 .gap-5 {
   gap: 1.25rem;
+}
+.gap-y-6 {
+  row-gap: 1.5rem;
 }
 .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -1500,26 +1515,18 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
-.bg-\[\#395c00\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(57 92 0 / var(--tw-bg-opacity));
-}
-.bg-transparent {
-  background-color: transparent;
-}
-.bg-current {
-  background-color: currentColor;
-}
-.bg-slate-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-.bg-slate-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-}
 .bg-opacity-25 {
   --tw-bg-opacity: 0.25;
+}
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.from-transparent {
+  --tw-gradient-from: transparent;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(0 0 0 / 0));
+}
+.to-black {
+  --tw-gradient-to: #000;
 }
 .bg-cover {
   background-size: cover;
@@ -1536,6 +1543,10 @@ select {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 .p-2 {
   padding: 0.5rem;
@@ -1609,6 +1620,10 @@ select {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .pt-6 {
   padding-top: 1.5rem;
@@ -2069,6 +2084,10 @@ span:nth-child(18) {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
+.hover\:text-indigo-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
+}
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2207,6 +2226,9 @@ span:nth-child(18) {
 .disabled\:opacity-25:disabled {
   opacity: 0.25;
 }
+.group:hover .group-hover\:opacity-75 {
+  opacity: 0.75;
+}
 @media (prefers-color-scheme: dark) {
 
   .dark\:bg-gray-900 {
@@ -2216,8 +2238,27 @@ span:nth-child(18) {
 }
 @media (min-width: 640px) {
 
+  .sm\:absolute {
+    position: absolute;
+  }
+
+  .sm\:relative {
+    position: relative;
+  }
+
+  .sm\:inset-0 {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
   .sm\:col-span-4 {
     grid-column: span 4 / span 4;
+  }
+
+  .sm\:row-span-2 {
+    grid-row: span 2 / span 2;
   }
 
   .sm\:mx-0 {
@@ -2283,6 +2324,10 @@ span:nth-child(18) {
     height: 66.666667%;
   }
 
+  .sm\:h-full {
+    height: 100%;
+  }
+
   .sm\:w-10 {
     width: 2.5rem;
   }
@@ -2332,12 +2377,24 @@ span:nth-child(18) {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
   .sm\:items-start {
     align-items: flex-start;
   }
 
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:items-baseline {
+    align-items: baseline;
   }
 
   .sm\:justify-start {
@@ -2350,6 +2407,11 @@ span:nth-child(18) {
 
   .sm\:justify-between {
     justify-content: space-between;
+  }
+
+  .sm\:gap-x-6 {
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
   }
 
   .sm\:rounded-lg {
@@ -2393,6 +2455,11 @@ span:nth-child(18) {
   .sm\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .sm\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 
   .sm\:pt-0 {
@@ -2496,6 +2563,10 @@ span:nth-child(18) {
 
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:gap-8 {
+    gap: 2rem;
   }
 
   .lg\:px-8 {
