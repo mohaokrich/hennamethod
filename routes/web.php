@@ -27,11 +27,11 @@ use Illuminate\Foundation\Application;
 //     });
 // });
 Route::get('/', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/Home');
 })->name('home');
 
 Route::get('/tratamientos', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/Treatmeants');
 })->name('tratamientos');
 
 Route::get('/blog', function () {

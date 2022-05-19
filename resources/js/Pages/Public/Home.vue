@@ -1,7 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Layouts/AppLayout.vue';
-import Welcome from '@/Pages/Public/Welcome.vue'
+import Welcome from '@/Pages/Public/main-content/Welcome.vue'
 </script>
 
 <template>

@@ -115,7 +115,7 @@ const logout = () => {
                                 <JetNavLink class="mobile:mx-8" :href="route('tratamientos')"
                                     :active="route().current('tratamientos')">
                                     Tratamientos
-                                </JetNavLink>
+                                </JetNavLink>   
                                 <JetNavLink class="mobile:mx-8" :href="route('blog')" :active="route().current('blog')">
                                     Blog
                                 </JetNavLink>
@@ -276,7 +276,7 @@ const logout = () => {
 
 
             <!-- Page Content -->
-            <main>
+            <main class="relative">
                 <slot />
             </main>
             <!-- Footer fixed max-w-full inset-x-0 bottom-0 -->
