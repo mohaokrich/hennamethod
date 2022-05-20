@@ -42,7 +42,7 @@ Route::get('/tratamiento-ghassoul', function () {
 })->name('treatments.ghassoul');
 
 Route::get('/blog', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/blog/index');
 })->name('blog');
 
 Route::get('/nosotros', function () {
