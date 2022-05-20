@@ -46,7 +46,7 @@ const logout = () => {
                         <div class="flex flex-wrap items-center ">
                             <!-- Settings Dropdown -->
                             <div class="relative mx-auto mt-2">
-                                <JetDropdown align="right" width="48" v-if="$page.props.user">
+                                <JetDropdown align="left" class="z-50 relative" width="48" v-if="$page.props.user">
                                     <template #trigger>
                                         <button v-if="$page.props.jetstream.managesProfilePhotos"
                                             class="flex text-sm border-2 border-gray-500 rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -112,10 +112,10 @@ const logout = () => {
                                 <JetNavLink class="mobile:mx-8" :href="route('home')" :active="route().current('home')">
                                     Inicio
                                 </JetNavLink>
-                                <JetNavLink class="mobile:mx-8" :href="route('tratamientos')"
-                                    :active="route().current('tratamientos')">
+                                <JetNavLink class="mobile:mx-8" :href="route('treatments')"
+                                    :active="route().current('treatments')">
                                     Tratamientos
-                                </JetNavLink>   
+                                </JetNavLink>
                                 <JetNavLink class="mobile:mx-8" :href="route('blog')" :active="route().current('blog')">
                                     Blog
                                 </JetNavLink>
@@ -179,7 +179,7 @@ const logout = () => {
                             Inicio
                         </JetResponsiveNavLink>
 
-                        <JetResponsiveNavLink :href="route('tratamientos')" :active="route().current('tratamientos')">
+                        <JetResponsiveNavLink :href="route('treatments')" :active="route().current('treatments')">
                             Tratamientos
                         </JetResponsiveNavLink>
 
@@ -277,6 +277,18 @@ const logout = () => {
 
             <!-- Page Content -->
             <main class="relative">
+                <div class="absolute bottom-0 left-0 z-20">
+                    <img src="/img/tropical-leaves-dry-bottom.png" alt="">
+                </div>
+                <div class="absolute top-0 left-0 z-20">
+                    <img src="/img/tropical-leaves-dry-top.png" alt="">
+                </div>
+                <div class="absolute top-0 right-0 z-20">
+                    <img src="/img/lamps-hanging-right.png" alt="">
+                </div>
+                <div class="absolute top-0 right-0 z-10">
+                    <img src="/img/climbing-plant-lined.png" alt="">
+                </div> 
                 <slot />
             </main>
             <!-- Footer fixed max-w-full inset-x-0 bottom-0 -->
