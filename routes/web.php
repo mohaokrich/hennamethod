@@ -5,16 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/* |-------------------------------------------------------------------------- | Web Routes |-------------------------------------------------------------------------- | | Here is where you can register web routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group. Now create something great! | */
 /* USER ZONE */
 // Route::middleware([
 //     'canLogin' => Route::has('login'),
@@ -27,12 +18,28 @@ use Illuminate\Foundation\Application;
 //     });
 // });
 Route::get('/', function () {
-    return Inertia::render('Public/Home');
+    return Inertia::render('Public/home/Welcome');
 })->name('home');
 
 Route::get('/tratamientos', function () {
-    return Inertia::render('Public/Treatmeants');
-})->name('tratamientos');
+    return Inertia::render('Public/treatments/Services');
+})->name('treatments');
+
+Route::get('/tratamiento-henna', function () {
+    return Inertia::render('Public/treatments/tratamiento-henna');
+})->name('treatments.henna');
+
+Route::get('/tratamiento-henna-neutra', function () {
+    return Inertia::render('Public/treatments/tratamiento-henna-neutra');
+})->name('treatments.henna.neutra');
+
+Route::get('/tratamiento-manzanilla', function () {
+    return Inertia::render('Public/treatments/tratamiento-manzanilla');
+})->name('treatments.manzanilla');
+
+Route::get('/tratamiento-ghassoul', function () {
+    return Inertia::render('Public/treatments/tratamiento-ghassoul');
+})->name('treatments.ghassoul');
 
 Route::get('/blog', function () {
     return Inertia::render('Home');
@@ -63,10 +70,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
-});
+            return Inertia::render('Dashboard');
+        }
+        )->name('dashboard');
+    });
 
 /* ADMIN ZONE */
 Route::middleware([
@@ -76,12 +83,13 @@ Route::middleware([
     'isAdmin',
 ])->group(function () {
     Route::get('/users', function () {
-        return Inertia::render('Dashboard');
-    })->name('users');
+            return Inertia::render('Dashboard');
+        }
+        )->name('users');
 
-    Route::get('/test', function () {
-        return Inertia::render('Test', [
+        Route::get('/test', function () {
+            return Inertia::render('Test', [
             'is_admin' => 1
-        ]);
-    })->name('test');
-});
+            ]);
+        }
+        )->name('test');    });
