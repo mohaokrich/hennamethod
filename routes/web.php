@@ -17,6 +17,7 @@ use Illuminate\Foundation\Application;
 //         return Inertia::render('Home');
 //     });
 // });
+/* PUBLIC ZONE */
 Route::get('/', function () {
     return Inertia::render('Public/home/Welcome');
 })->name('home');
@@ -46,7 +47,7 @@ Route::get('/blog', function () {
 })->name('blog');
 
 Route::get('/nosotros', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/us/index');
 })->name('nosotros');
 
 Route::get('/contacto', function () {
@@ -70,7 +71,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-            return Inertia::render('Dashboard');
+            return Inertia::render('Public/home/Welcome');
         }
         )->name('dashboard');
     });
