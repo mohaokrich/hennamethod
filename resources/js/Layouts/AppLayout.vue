@@ -277,21 +277,21 @@ const logout = () => {
 
             <!-- Page Content -->
             <main class="relative">
-                <div class="absolute bottom-0 left-0 z-20">
+                <div class="absolute bottom-0 left-0 z-20 w-1/5">
                     <img src="/img/tropical-leaves-dry-bottom.png" alt="">
                 </div>
-                <div class="absolute top-0 left-0 z-20">
+                <div class="absolute top-0 left-0 z-20 w-1/5">
                     <img src="/img/tropical-leaves-dry-top.png" alt="">
                 </div>
-                <div class="absolute top-0 right-0 z-20">
+                <div class="absolute top-0 right-0 z-20 w-1/5">
                     <img src="/img/lamps-hanging-right.png" alt="">
                 </div>
-                <div class="absolute top-0 right-0 z-10">
+                <div class="absolute top-0 right-0 z-10 w-2/5">
                     <img src="/img/climbing-plant-lined.png" alt="">
                 </div> 
                 <slot />
             </main>
-            <!-- Footer fixed max-w-full inset-x-0 bottom-0 -->
+            <!-- Footer fixed max-w-full inset-x-0 bottom-0 z-50 -->
             <footer class="bg-black">
                 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
                     <div class="flex justify-center space-x-6 md:order-1">
