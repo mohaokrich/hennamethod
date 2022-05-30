@@ -55,7 +55,7 @@ Route::get('/contacto', function () {
 })->name('contacto');
 
 Route::get('/faqs', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/faqs/index');
 })->name('faqs');
 
 Route::get('/aviso-legal', function () {

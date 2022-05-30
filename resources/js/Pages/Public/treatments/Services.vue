@@ -9,7 +9,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
             <!-- <div class="absolute inset-0">
             <div class="bg-white h-1/3 sm:h-2/3" />
         </div> -->
-            <div class="bg-gray-50 max-w-full z-0">
+            <div class="bg-white max-w-screen-xl z-0 mx-auto">
                 <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 z-40 relative">
                     <div class="sm:flex sm:items-baseline justify-center">
                         <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Tratamientos</h2>
@@ -45,7 +45,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
                             <div class="p-6 flex items-end sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold sm:text-white text-black">
-                                        <Link :href="route('treatments.henna.neutra')">
+                                        <Link :href="route('treatments.henna.neutra')" :active="route().current('treatments')">
                                             <span class="absolute inset-0" />
                                             Tratamiento de henna neutra
                                         </Link>
