@@ -45,7 +45,7 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
                             <div class="p-6 flex items-end sm:absolute sm:inset-0">
                                 <div>
                                     <h3 class="font-semibold sm:text-white text-black">
-                                        <Link :href="route('treatments.henna.neutra')">
+                                        <Link :href="route('treatments.henna.neutra')" :active="route().current('treatments')">
                                             <span class="absolute inset-0" />
                                             Tratamiento de henna neutra
                                         </Link>
