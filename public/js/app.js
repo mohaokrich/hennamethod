@@ -29012,7 +29012,7 @@ var _hoisted_2 = {
   "class": "py-12 z-40 relative"
 };
 var _hoisted_3 = {
-  "class": "max-w-screen-xl mx-auto px-8 md:px-2"
+  "class": "max-w-screen-xl mx-auto"
 };
 var _hoisted_4 = {
   "class": ""

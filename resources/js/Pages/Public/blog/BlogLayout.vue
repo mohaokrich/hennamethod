@@ -13,7 +13,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
         </template>
          <!-- style="background:url('/img/tropical-leaves-dry-bottom.png') left bottom no-repeat, url('/img/tropical-leaves-dry-top.png') left top no-repeat, url('/img/lamps-hanging-right.png') right top no-repeat; background-size: 25%;" -->
         <div class="py-12 z-40 relative">
-            <div class="max-w-screen-xl mx-auto px-8 md:px-2" >
+            <div class="max-w-screen-xl mx-auto" >
                 <div class="">
                     <slot />
                 </div>
