@@ -286,7 +286,7 @@ const logout = () => {
                 <div class="absolute top-0 right-0 z-20 w-1/5">
                     <img src="/img/lamps-hanging-right.png" alt="">
                 </div>
-                <div class="absolute top-0 right-0 z-10 w-2/5">
+                <div class="absolute top-0 right-0 z-10">
                     <img src="/img/climbing-plant-lined.png" alt="">
                 </div> 
                 <slot />

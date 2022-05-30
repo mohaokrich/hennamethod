@@ -26133,7 +26133,7 @@ var _hoisted_52 = {
   "class": "relative"
 };
 
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"absolute bottom-0 left-0 z-20 w-1/5\"><img src=\"/img/tropical-leaves-dry-bottom.png\" alt=\"\"></div><div class=\"absolute top-0 left-0 z-20 w-1/5\"><img src=\"/img/tropical-leaves-dry-top.png\" alt=\"\"></div><div class=\"absolute top-0 right-0 z-20 w-1/5\"><img src=\"/img/lamps-hanging-right.png\" alt=\"\"></div><div class=\"absolute top-0 right-0 z-10 w-2/5\"><img src=\"/img/climbing-plant-lined.png\" alt=\"\"></div>", 4);
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"absolute bottom-0 left-0 z-20 w-1/5\"><img src=\"/img/tropical-leaves-dry-bottom.png\" alt=\"\"></div><div class=\"absolute top-0 left-0 z-20 w-1/5\"><img src=\"/img/tropical-leaves-dry-top.png\" alt=\"\"></div><div class=\"absolute top-0 right-0 z-20 w-1/5\"><img src=\"/img/lamps-hanging-right.png\" alt=\"\"></div><div class=\"absolute top-0 right-0 z-10\"><img src=\"/img/climbing-plant-lined.png\" alt=\"\"></div>", 4);
 
 var _hoisted_57 = {
   "class": "bg-black"
