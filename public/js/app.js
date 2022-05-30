@@ -29731,7 +29731,7 @@ var _hoisted_1 = {
   "class": ""
 };
 var _hoisted_2 = {
-  "class": "bg-gray-50 max-w-full z-0"
+  "class": "bg-white max-w-screen-xl z-0 mx-auto"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 z-40 relative"
@@ -56860,6 +56860,48 @@ if (false) {}
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Public/faqs/FaqsLayout.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/Pages/Public/faqs/FaqsLayout.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/Pages/Public/faqs/FaqsLayout.vue"]])
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Public/faqs/index.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/Pages/Public/faqs/index.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+const script = {}
+
+;
+const __exports__ = /*#__PURE__*/(0,_var_www_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(script, [['__file',"resources/js/Pages/Public/faqs/index.vue"]])
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Public/home/HomeLayout.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/Pages/Public/home/HomeLayout.vue ***!
@@ -59326,6 +59368,8 @@ var map = {
 	"./Public/blog/index.vue": "./resources/js/Pages/Public/blog/index.vue",
 	"./Public/contact/ContactLayout.vue": "./resources/js/Pages/Public/contact/ContactLayout.vue",
 	"./Public/contact/index.vue": "./resources/js/Pages/Public/contact/index.vue",
+	"./Public/faqs/FaqsLayout.vue": "./resources/js/Pages/Public/faqs/FaqsLayout.vue",
+	"./Public/faqs/index.vue": "./resources/js/Pages/Public/faqs/index.vue",
 	"./Public/home/HomeLayout.vue": "./resources/js/Pages/Public/home/HomeLayout.vue",
 	"./Public/home/Welcome.vue": "./resources/js/Pages/Public/home/Welcome.vue",
 	"./Public/treatments/Services.vue": "./resources/js/Pages/Public/treatments/Services.vue",
