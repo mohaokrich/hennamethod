@@ -51,7 +51,7 @@ Route::get('/nosotros', function () {
 })->name('nosotros');
 
 Route::get('/contacto', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Public/contact/index');
 })->name('contacto');
 
 Route::get('/faqs', function () {
