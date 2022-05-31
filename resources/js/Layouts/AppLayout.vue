@@ -71,6 +71,12 @@ const logout = () => {
 
                                         <div class="border-t border-gray-100" />
 
+                                        <JetDropdownLink v-if="$page.props.user.is_admin == 1" :href="route('profile.show')">
+                                            Gestión posts
+                                        </JetDropdownLink>
+
+                                        <div class="border-t border-gray-100" />
+
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <JetDropdownLink as="button">
@@ -288,7 +294,7 @@ const logout = () => {
                 </div>
                 <div class="absolute top-0 right-0 z-10">
                     <img src="/img/climbing-plant-lined.png" alt="">
-                </div> 
+                </div>
                 <slot />
             </main>
             <!-- Footer fixed max-w-full inset-x-0 bottom-0 z-50 -->
@@ -304,7 +310,8 @@ const logout = () => {
                             </svg>
                         </a>
 
-                        <a href="https://www.instagram.com/hennamethod/?hl=es" class="text-gray-400 hover:text-gray-500" target="_blank">
+                        <a href="https://www.instagram.com/hennamethod/?hl=es" class="text-gray-400 hover:text-gray-500"
+                            target="_blank">
                             <span class="sr-only">Instagram</span>
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fill-rule="evenodd"
@@ -313,7 +320,8 @@ const logout = () => {
                             </svg>
                         </a>
 
-                        <a href="https://twitter.com/hennamethod" class="text-gray-400 hover:text-gray-500" target="_blank">
+                        <a href="https://twitter.com/hennamethod" class="text-gray-400 hover:text-gray-500"
+                            target="_blank">
                             <span class="sr-only">Twitter</span>
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path

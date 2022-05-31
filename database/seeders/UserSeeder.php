@@ -19,11 +19,22 @@ class UserSeeder extends Seeder
     public function run()
     {
         $users = [
-            'name' => 'Moha',
-            'last_name' => 'Okrich',
-            'phone' => '678258000',
-            'email' => 'moha@edatta.com',
-            'password' => bcrypt('moha')
+            [
+                'name' => 'Moha',
+                'last_name' => 'Okrich',
+                'password' => bcrypt('moha'),
+                'phone' => '678258000',
+                'email' => 'moha@edatta.com',
+                'is_admin' => false,
+            ],
+            [
+                'name' => 'Mohadmin',
+                'last_name' => 'Okrich',
+                'password' => bcrypt('moha'),
+                'phone' => '678258010',
+                'email' => 'mohadmin@edatta.com',
+                'is_admin' => true,
+            ],
         ];
 
         User::insert($users);
