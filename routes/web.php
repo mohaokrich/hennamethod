@@ -83,9 +83,9 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    Route::get('/faqs', function () {
-        return Inertia::render('Public/faqs/index', [
+    Route::get('/blog-managment', function () {
+        return Inertia::render('Admin/blog/index', [
             'is_admin' => 1
         ]);
-    })->name('faqs');
+    })->name('blog-admin');
 });

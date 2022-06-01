@@ -71,7 +71,8 @@ const logout = () => {
 
                                         <div class="border-t border-gray-100" />
 
-                                        <JetDropdownLink v-if="$page.props.user.is_admin == 1" :href="route('profile.show')">
+                                        <JetDropdownLink v-if="$page.props.user.is_admin == 1"
+                                            :href="route('blog-admin')">
                                             Gestión posts
                                         </JetDropdownLink>
 
@@ -230,12 +231,10 @@ const logout = () => {
                                 Perfil
                             </JetResponsiveNavLink>
 
-                            <!-- <JetResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures"
-                                :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
-                                API Tokens
-                            </JetResponsiveNavLink> -->
+                            <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('blog-admin')">
+                                Gestión posts
+                            </JetResponsiveNavLink>
 
-                            <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <JetResponsiveNavLink as="button">
                                     Salir
