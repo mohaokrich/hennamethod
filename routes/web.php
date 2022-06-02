@@ -84,8 +84,9 @@ Route::middleware([
     'isAdmin',
 ])->group(function () {
     Route::get('/blog-managment', function () {
-        return Inertia::render('Admin/blog/index', [
-            'is_admin' => 1
-        ]);
+        return Inertia::render('Admin/blog/index');
     })->name('blog-admin');
+    Route::get('/treatments-managment', function () {
+        return Inertia::render('Admin/treatments/index');
+    })->name('treatments-admin');
 });

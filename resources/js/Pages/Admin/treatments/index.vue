@@ -8,7 +8,7 @@ import AdminLayout from '@/Layouts/AdminLayout.vue';
   <AdminLayout>
     <div class="py-6">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <h1>BLOG</h1>
+          <h1>TREATMENTS</h1>
       </div>
     </div>
   </AdminLayout>

@@ -73,7 +73,7 @@ const logout = () => {
 
                                         <JetDropdownLink v-if="$page.props.user.is_admin == 1"
                                             :href="route('blog-admin')">
-                                            Gestión posts
+                                            Administración
                                         </JetDropdownLink>
 
                                         <div class="border-t border-gray-100" />
@@ -232,7 +232,7 @@ const logout = () => {
                             </JetResponsiveNavLink>
 
                             <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('blog-admin')">
-                                Gestión posts
+                                Administración
                             </JetResponsiveNavLink>
 
                             <form method="POST" @submit.prevent="logout">
