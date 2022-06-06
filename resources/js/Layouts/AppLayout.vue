@@ -71,6 +71,13 @@ const logout = () => {
 
                                         <div class="border-t border-gray-100" />
 
+                                        <JetDropdownLink v-if="$page.props.user.is_admin == 1"
+                                            :href="route('blog.admin')">
+                                            Administración
+                                        </JetDropdownLink>
+
+                                        <div class="border-t border-gray-100" />
+
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <JetDropdownLink as="button">
@@ -224,12 +231,10 @@ const logout = () => {
                                 Perfil
                             </JetResponsiveNavLink>
 
-                            <!-- <JetResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures"
-                                :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
-                                API Tokens
-                            </JetResponsiveNavLink> -->
+                            <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('blog.admin')">
+                                Administración
+                            </JetResponsiveNavLink>
 
-                            <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <JetResponsiveNavLink as="button">
                                     Salir
@@ -288,7 +293,7 @@ const logout = () => {
                 </div>
                 <div class="absolute top-0 right-0 z-10">
                     <img src="/img/climbing-plant-lined.png" alt="">
-                </div> 
+                </div>
                 <slot />
             </main>
             <!-- Footer fixed max-w-full inset-x-0 bottom-0 z-50 -->
@@ -304,7 +309,8 @@ const logout = () => {
                             </svg>
                         </a>
 
-                        <a href="https://www.instagram.com/hennamethod/?hl=es" class="text-gray-400 hover:text-gray-500" target="_blank">
+                        <a href="https://www.instagram.com/hennamethod/?hl=es" class="text-gray-400 hover:text-gray-500"
+                            target="_blank">
                             <span class="sr-only">Instagram</span>
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fill-rule="evenodd"
@@ -313,7 +319,8 @@ const logout = () => {
                             </svg>
                         </a>
 
-                        <a href="https://twitter.com/hennamethod" class="text-gray-400 hover:text-gray-500" target="_blank">
+                        <a href="https://twitter.com/hennamethod" class="text-gray-400 hover:text-gray-500"
+                            target="_blank">
                             <span class="sr-only">Twitter</span>
                             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path
@@ -323,7 +330,7 @@ const logout = () => {
                     </div>
                     <div class="mt-8 md:mt-0 md:order-2">
                         <p class="text-center text-base text-gray-400">&copy; 2022 Henna Method. All rights reserved |
-                            <Link class="font-extrabold text-gray-300" :href="route('aviso-legal')">Aviso legal</Link>
+                            <Link class="font-extrabold text-gray-300" :href="route('aviso.legal')">Aviso legal</Link>
                         </p>
                     </div>
                     <div class="mt-8 md:mt-0 md:order-3">

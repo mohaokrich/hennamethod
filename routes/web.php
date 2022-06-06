@@ -18,6 +18,7 @@ use Illuminate\Foundation\Application;
 //     });
 // });
 /* PUBLIC ZONE */
+
 Route::get('/', function () {
     return Inertia::render('Public/home/Welcome');
 })->name('home');
@@ -60,21 +61,20 @@ Route::get('/faqs', function () {
 
 Route::get('/aviso-legal', function () {
     return Inertia::render('Home');
-})->name('aviso-legal');
+})->name('aviso.legal');
 
 
 
 /* USER ZONE */
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-            return Inertia::render('Public/home/Welcome');
-        }
-        )->name('dashboard');
-    });
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return Inertia::render('Public/home/Welcome');
+//     })->name('dashboard');
+// });
 
 /* ADMIN ZONE */
 Route::middleware([
@@ -83,14 +83,10 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    Route::get('/users', function () {
-            return Inertia::render('Dashboard');
-        }
-        )->name('users');
-
-        Route::get('/test', function () {
-            return Inertia::render('Test', [
-            'is_admin' => 1
-            ]);
-        }
-        )->name('test');    });
+    Route::get('/blog-managment', function () {
+        return Inertia::render('Admin/blog/index');
+    })->name('blog.admin');
+    Route::get('/treatments-managment', function () {
+        return Inertia::render('Admin/treatments/index');
+    })->name('treatments.admin');
+});

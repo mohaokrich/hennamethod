@@ -11,7 +11,7 @@ import ContactLayout from '@/Pages/Public/contact/ContactLayout.vue'
                     width="600" class="absolute w-full h-full top-0 bottom-0 right-0 left-0 rounded-lg" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="mx-auto">
+            <div class="mx-auto pt-10 lg:pt-0">
                 <div class="relative">
                     <div class="absolute inset-0 flex items-center" aria-hidden="true">
                         <div class="w-full border-t border-gray-300" />
