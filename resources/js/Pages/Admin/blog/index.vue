@@ -1,6 +1,8 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 const people = [
+  { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
   { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
   // More people...
 ]
@@ -16,16 +18,18 @@ const people = [
           <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
               <center>
-                <h1 class="text-xl font-semibold text-gray-900">Gestionar posts</h1>
+                <h3 class="text-2xl leading-6 font-medium text-gray-900">Gestionar posts</h3>
               </center>
               <center>
-                <p class="mt-2 text-sm text-gray-700">Una lista con todos los posts donde podras editar o eliminar.</p>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Una lista con todos los posts donde podras editar o eliminar..</p>
               </center>
             </div>
             <div class="mt-4 sm:mt-0 sm:flex-none">
+              <Link :href="route('posts.create')">
               <button type="button"
                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Crear
                 post</button>
+              </Link>
             </div>
           </div>
           <div class="mt-8 flex flex-col">

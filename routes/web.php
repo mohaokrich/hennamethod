@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\PostController;
 
 /* |-------------------------------------------------------------------------- | Web Routes |-------------------------------------------------------------------------- | | Here is where you can register web routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group. Now create something great! | */
 /* USER ZONE */
@@ -83,9 +84,15 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    Route::get('/blog-managment', function () {
+    /*Route::get('/blog-managment', function () {
         return Inertia::render('Admin/blog/index');
     })->name('blog.admin');
+    Route::get('/blog-post', function () {
+        return Inertia::render('Admin/blog/crear-post');
+    })->name('blog-post.admin');*/
+
+    Route::resource('posts', PostController::class);
+
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
