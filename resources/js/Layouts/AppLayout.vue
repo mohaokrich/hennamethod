@@ -72,7 +72,7 @@ const logout = () => {
                                         <div class="border-t border-gray-100" />
 
                                         <JetDropdownLink v-if="$page.props.user.is_admin == 1"
-                                            :href="route('blog-admin')">
+                                            :href="route('blog.admin')">
                                             Administración
                                         </JetDropdownLink>
 
@@ -231,7 +231,7 @@ const logout = () => {
                                 Perfil
                             </JetResponsiveNavLink>
 
-                            <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('blog-admin')">
+                            <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('blog.admin')">
                                 Administración
                             </JetResponsiveNavLink>
 
@@ -330,7 +330,7 @@ const logout = () => {
                     </div>
                     <div class="mt-8 md:mt-0 md:order-2">
                         <p class="text-center text-base text-gray-400">&copy; 2022 Henna Method. All rights reserved |
-                            <Link class="font-extrabold text-gray-300" :href="route('aviso-legal')">Aviso legal</Link>
+                            <Link class="font-extrabold text-gray-300" :href="route('aviso.legal')">Aviso legal</Link>
                         </p>
                     </div>
                     <div class="mt-8 md:mt-0 md:order-3">

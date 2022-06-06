@@ -61,7 +61,7 @@ Route::get('/faqs', function () {
 
 Route::get('/aviso-legal', function () {
     return Inertia::render('Home');
-})->name('aviso-legal');
+})->name('aviso.legal');
 
 
 
@@ -85,8 +85,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/blog-managment', function () {
         return Inertia::render('Admin/blog/index');
-    })->name('blog-admin');
+    })->name('blog.admin');
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
-    })->name('treatments-admin');
+    })->name('treatments.admin');
 });
