@@ -14,10 +14,6 @@ import {
     XIcon,
 } from '@heroicons/vue/outline'
 
-const navigation = [
-    { name: 'Gestión blog', href: "route('blog.admin')", icon: HomeIcon, current: true },
-    { name: 'Gestión citas', href: "route('treatments.admin')", icon: UsersIcon, current: false },
-]
 
 const sidebarOpen = ref(false)
 </script>
@@ -66,10 +62,10 @@ const sidebarOpen = ref(false)
                                     src="/img/logo-hm-inkfree-madrid-mini.svg" alt="logo-brand">
                                 </Link>
                                 <nav class="mt-5 px-2 space-y-1">
-                                    <Link :href="route('blog.admin')"
-                                        :class="[route().current('blog.admin') ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
+                                    <Link :href="route('posts.index')"
+                                        :class="[route().current('posts.index') ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
                                     <component :is="HomeIcon"
-                                        :class="[route().current('blog.admin') ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-4 flex-shrink-0 h-6 w-6']"
+                                        :class="[route().current('posts.index') ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-4 flex-shrink-0 h-6 w-6']"
                                         aria-hidden="true" />
                                     Gestión blog
                                     </Link>
@@ -120,10 +116,10 @@ const sidebarOpen = ref(false)
                         src="/img/logo-hm-inkfree-madrid-mini.svg" alt="logo-brand">
                     </Link>
                     <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
-                        <Link :href="route('blog.admin')"
-                            :class="[route().current('blog.admin') ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
+                        <Link :href="route('posts.index')"
+                            :class="[route().current('posts.index') ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
                         <component :is="HomeIcon"
-                            :class="[route().current('blog.admin') ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-4 flex-shrink-0 h-6 w-6']"
+                            :class="[route().current('posts.index') ? 'text-gray-500' : 'text-gray-400 group-hover:text-gray-500', 'mr-4 flex-shrink-0 h-6 w-6']"
                             aria-hidden="true" />
                         Gestión blog
                         </Link>

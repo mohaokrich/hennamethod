@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('body');
             $table->string('author')->default('Henna Method');
             $table->date('post_creation');
+            $table->text('photo')->nullable();
             $table->longText('excerpt')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -4,6 +4,8 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\showPostInBlogController;
 
 /* |-------------------------------------------------------------------------- | Web Routes |-------------------------------------------------------------------------- | | Here is where you can register web routes for your application. These | routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group. Now create something great! | */
 /* USER ZONE */
@@ -18,10 +20,8 @@ use Illuminate\Foundation\Application;
 //     });
 // });
 /* PUBLIC ZONE */
+Route::get('/', [PostController::class, 'getPostIndex'])->name('home');
 
-Route::get('/', function () {
-    return Inertia::render('Public/home/Welcome');
-})->name('home');
 
 Route::get('/tratamientos', function () {
     return Inertia::render('Public/treatments/Services');
@@ -43,9 +43,7 @@ Route::get('/tratamiento-ghassoul', function () {
     return Inertia::render('Public/treatments/tratamiento-ghassoul');
 })->name('treatments.ghassoul');
 
-Route::get('/blog', function () {
-    return Inertia::render('Public/blog/index');
-})->name('blog');
+Route::get('/blog', [PostController::class, 'showPosts'])->name('blog');
 
 Route::get('/nosotros', function () {
     return Inertia::render('Public/us/index');
@@ -83,10 +81,18 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    Route::get('/blog-managment', function () {
+    /*Route::get('/blog-managment', function () {
         return Inertia::render('Admin/blog/index');
     })->name('blog.admin');
+    Route::get('/blog-post', function () {
+        return Inertia::render('Admin/blog/crear-post');
+    })->name('blog-post.admin');*/
+
+    Route::resource('posts', PostController::class);
+
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
 });
+
+Route::get('/{slug}', showPostInBlogController::class)->name('blog.show-post');
