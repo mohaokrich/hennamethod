@@ -29,7 +29,7 @@ class StorePostRequest extends FormRequest
             'title'=> ['required', 'max:255'],
             'title_slug'=> ['required', 'unique:posts', 'max:255'],
             'body'=> ['required', 'max:500'],
-            'author'=> ['required', 'unique:posts', 'max:255'],
+            'author'=> ['required', 'max:255'],
             'post_creation'=> ['required', 'date', 'max:255'],
             'photo'=> ['nullable', 'image', 'mimes:jpg,bmp,png', 'max:500000'],
             'excerpt'=> ['required', 'max:255'],

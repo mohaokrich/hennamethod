@@ -1,12 +1,20 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import { Head, Link } from '@inertiajs/inertia-vue3';
-const people = [
-  { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-  { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-  // More people...
-]
+import Pagination from '@/Jetstream/Pagination';
+</script>
 
+<script>
+export default {
+  components: {
+    Pagination,
+  },
+  props: {
+    posts: Object
+  },
+  methods: {}
+
+};
 </script>
 
 <template>
@@ -21,7 +29,8 @@ const people = [
                 <h3 class="text-2xl leading-6 font-medium text-gray-900">Gestionar posts</h3>
               </center>
               <center>
-                <p class="mt-1 max-w-2xl text-sm text-gray-500">Una lista con todos los posts donde podras editar o eliminar..</p>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">Una lista con todos los posts donde podras editar o
+                  eliminar..</p>
               </center>
             </div>
             <div class="mt-4 sm:mt-0 sm:flex-none">
@@ -46,11 +55,11 @@ const people = [
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
-                      <tr v-for="person in people" :key="person.email" class="divide-x divide-gray-200">
+                      <tr v-for="post in posts.data" :key="post.id" class="divide-x divide-gray-200">
                         <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">{{
-                            person.name
+                            post.id
                         }}</td>
-                        <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{ person.title }}</td>
+                        <td class="whitespace-nowrap p-4 text-sm text-gray-500">{{ post.title }}</td>
                         <td class="whitespace-nowrap p-4 text-sm text-gray-500 space-x-4 flex justify-center">
                           <button type="button"
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto">Ver</button>
@@ -63,6 +72,7 @@ const people = [
                     </tbody>
                   </table>
                 </div>
+                <pagination class="mt-10 flex justify-center" :links="posts.links" />
               </div>
             </div>
           </div>

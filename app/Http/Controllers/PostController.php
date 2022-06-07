@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
-use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -14,9 +15,22 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function showPosts(){
+        $posts = Post::latest('post_creation')->paginate(10);
+         
+        return Inertia::render('Public/blog/index', ['posts' => $posts]);
+    }
+
+    public function getPostIndex(){
+        $posts = Post::latest()->take(3)->get();
+        return Inertia::render('Public/home/Welcome',['posts'=> $posts]);
+    }
+
+
     public function index()
     {
-        return Inertia::render('Admin/blog/index');
+        $posts = Post::latest('post_creation')->paginate(10);
+        return Inertia::render('Admin/blog/index',['posts' => $posts]);
     }
 
     /**
@@ -37,17 +51,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $photo_collection = $request->validated();
+        $validated_data = $request->validated();
 
-        // dd($photo_collection);
-
-        // Sacar el nombre fichero
         // Guardar en storage el fichero
+        $path = $request->file('photo')->store(
+            'blog', 'public'
+        );
 
-        $request->validated()['photo'] = '/storage/app/public/blog';
+        data_set($validated_data, 'photo', $path);
+        
+        Post::create($validated_data);
 
-
-        Post::create($request->validated());
+        return Inertia::render('Admin/blog/crear-post');
     }
 
     /**

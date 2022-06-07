@@ -159,6 +159,7 @@ export default {
                                         <textarea id="extracto" v-model="form.excerpt" name="excerpt" rows="3"
                                             class="max-w-full shadow-sm block w-full focus:ring-gray-500 focus:border-v-500 sm:text-sm border border-gray-300 rounded-md" />
                                     </div>
+                                    <div class="text-red-600" v-if="errors.excerpt">{{ errors.excerpt }}</div>
                                 </div>
                             </div>
                         </div>
