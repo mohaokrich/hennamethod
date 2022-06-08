@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
@@ -15,22 +16,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showPosts(){
+    public function index()
+    {
         $posts = Post::latest('post_creation')->paginate(10);
-         
+        return Inertia::render('Admin/blog/index',['posts' => $posts]);
+    }
+    public function getPostList(){
+        $posts = Post::latest('post_creation')->paginate(10);
         return Inertia::render('Public/blog/index', ['posts' => $posts]);
     }
 
     public function getPostIndex(){
         $posts = Post::latest()->take(3)->get();
         return Inertia::render('Public/home/Welcome',['posts'=> $posts]);
-    }
-
-
-    public function index()
-    {
-        $posts = Post::latest('post_creation')->paginate(10);
-        return Inertia::render('Admin/blog/index',['posts' => $posts]);
     }
 
     /**
@@ -82,9 +80,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $post = Post::find($id);
+        
+        if ($post) {
+            return Inertia::render('Admin/blog/editar-post', compact('post'));
+        }
+
+        abort(404);
     }
 
     /**
@@ -94,9 +97,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostRequest $request, Post $post)
     {
-        //
+        $validated_data = $request->validated();
+        //$post = Post::find($id);
+        
+        if($validated_data['photo'] != null ){
+            $path = $request->file('photo')->store(
+                'blog', 'public'
+            );
+    
+            data_set($validated_data, 'photo', $path);    
+        }
+
+        $post->update($validated_data);
+
+        return Redirect::back()->with('success', 'Post updated.');  
     }
 
     /**
@@ -105,8 +121,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    public function destroy(Post $post)
+    {   
+        $post->delete();
+        return Redirect::back()->with('success', 'Post deleted.');  
+    }   
 }

@@ -43,7 +43,7 @@ Route::get('/tratamiento-ghassoul', function () {
     return Inertia::render('Public/treatments/tratamiento-ghassoul');
 })->name('treatments.ghassoul');
 
-Route::get('/blog', [PostController::class, 'showPosts'])->name('blog');
+Route::get('/blog', [PostController::class, 'getPostList'])->name('blog');
 
 Route::get('/nosotros', function () {
     return Inertia::render('Public/us/index');
@@ -93,6 +93,11 @@ Route::middleware([
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
+    
+    //Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    //Route::get('posts/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 });
 
 Route::get('/{slug}', showPostInBlogController::class)->name('blog.show-post');
+

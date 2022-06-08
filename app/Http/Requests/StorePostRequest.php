@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +28,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title'=> ['required', 'max:255'],
-            'title_slug'=> ['required', 'unique:posts', 'max:255'],
+            'title_slug'=> ['required', 'max:255', Rule::unique('posts', 'title_slug')->ignore($this->post)],
             'body'=> ['required', 'max:500'],
             'author'=> ['required', 'max:255'],
             'post_creation'=> ['required', 'date', 'max:255'],
