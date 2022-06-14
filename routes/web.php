@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -64,15 +65,16 @@ Route::get('/aviso-legal', function () {
 
 
 /* USER ZONE */
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('Public/home/Welcome');
-//     })->name('dashboard');
-// });
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    // Route::get('/user-appoinment', function () {
+    //     return Inertia::render('User/appointments/index');
+    // })->name('appointment.user');
+    Route::resource('appointments', AppointmentController::class);
+});
 
 /* ADMIN ZONE */
 Route::middleware([
@@ -94,7 +96,7 @@ Route::middleware([
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
     
-    //Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    //Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');   
     //Route::get('posts/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 });

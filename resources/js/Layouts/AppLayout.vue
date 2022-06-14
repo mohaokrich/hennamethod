@@ -76,6 +76,10 @@ const logout = () => {
                                             Administración
                                         </JetDropdownLink>
 
+                                        <JetDropdownLink v-else
+                                            :href="route('appointments.index')">
+                                            Citas
+                                        </JetDropdownLink>
                                         <div class="border-t border-gray-100" />
 
                                         <!-- Authentication -->
@@ -233,6 +237,12 @@ const logout = () => {
 
                             <JetResponsiveNavLink v-if="$page.props.user.is_admin == 1" :href="route('posts.index')">
                                 Administración
+                            </JetResponsiveNavLink>
+
+
+                            <JetResponsiveNavLink v-else
+                                :href="route('appointments.index')">
+                                Citas
                             </JetResponsiveNavLink>
 
                             <form method="POST" @submit.prevent="logout">
