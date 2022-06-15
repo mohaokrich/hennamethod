@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
+use Inertia\Inertia;
 use App\Models\Timeslot;
 use App\Models\Treatment;
-use Inertia\Inertia;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\StoreAppointmentRequest;
 
 class AppointmentController extends Controller
 {
@@ -19,8 +23,14 @@ class AppointmentController extends Controller
     {   
         $treatments = Treatment::all();
         $timeslots = Timeslot::all();
+        $appointments = DB::table('appointments')
+        ->join('users', 'appointments.user_id', '=', 'users.id')
+        ->join('timeslots', 'appointments.timeslot_id', '=', 'timeslots.id')
+        ->select('appointments.*', 'users.name', 'timeslots.start_time', 'timeslots.end_time')
+        ->get();
 
-        return Inertia::render('User/appointments/index', ['treatments' => $treatments, 'timeslots' => $timeslots]);
+
+        return Inertia::render('User/appointments/index', ['treatments' => $treatments, 'timeslots' => $timeslots, 'appointments' => $appointments]);
     }
 
     /**
@@ -39,9 +49,28 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+
+
+        $treatment = data_get($validated_data, 'treatment_id', false);
+
+
+        unset($validated_data['treatment_id']);
+
+
+        $validated_data['user_id'] = Auth::user()->id;
+
+        $appointment = Appointment::create($validated_data);       
+
+
+        if ($treatment) {
+            $appointment->treatments()->attach($treatment);
+        }
+
+        return Redirect::back();
     }
 
     /**
@@ -84,8 +113,11 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appointment $appointment)
     {
-        //
+        $appointment->treatments()->detach();
+        $appointment->delete();
+        
+        return Redirect::back()->with('success', 'Appointment deleted.');  
     }
 }

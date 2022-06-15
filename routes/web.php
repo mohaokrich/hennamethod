@@ -68,7 +68,7 @@ Route::get('/aviso-legal', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
+    // 'verified',
 ])->group(function () {
     // Route::get('/user-appoinment', function () {
     //     return Inertia::render('User/appointments/index');
@@ -83,21 +83,11 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    /*Route::get('/blog-managment', function () {
-        return Inertia::render('Admin/blog/index');
-    })->name('blog.admin');
-    Route::get('/blog-post', function () {
-        return Inertia::render('Admin/blog/crear-post');
-    })->name('blog-post.admin');*/
-
     Route::resource('posts', PostController::class);
 
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
-    
-    //Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');   
-    //Route::get('posts/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 });
 

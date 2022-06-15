@@ -5,52 +5,7 @@ import { ref, onMounted } from 'vue'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
 import ModalInfo from '@/Jetstream/ModalInfo.vue';
-
-
-// const timeslots = [
-//     { timeslot: '10:00-12:00', inStock: true },
-//     { timeslot: '12:00-14:00', inStock: true },
-//     { timeslot: '11:00-13:00', inStock: true },
-//     { timeslot: '13:00-15:00', inStock: true },
-//     { timeslot: '17:00-19:00', inStock: true },
-//     { timeslot: '16:00-18:00', inStock: false },
-// ]
-
-// const mem = ref(timeslots[2])
-
-// const container = ref(null)
-// const containerNav = ref(null)
-// const containerOffset = ref(null)
-const meetings = [
-    {
-        id: 1,
-        name: 'Leslie Alexander',
-        imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        start: '1:00 PM',
-        startDatetime: '2022-01-21T13:00',
-        end: '2:30 PM',
-        endDatetime: '2022-01-21T14:30',
-    },
-]
-const mailingLists = [
-    { id: 1, title: 'Newsletter', description: 'Last message sent an hour ago', users: '621 users' },
-    { id: 2, title: 'Existing Customers', description: 'Last message sent 2 weeks ago', users: '1200 users' },
-    { id: 3, title: 'Trial Users', description: 'Last message sent 4 days ago', users: '2740 users' },
-]
-const options = [
-    { name: 'si', value: true, bgColor: 'bg-pink-500', selectedColor: 'ring-pink-500' },
-    { name: 'no', value: false, bgColor: 'bg-purple-500', selectedColor: 'ring-purple-500' },
-]
-const sides = [
-    { id: null, name: 'None' },
-    { id: 1, name: 'Baked beans' },
-    { id: 2, name: 'Coleslaw' },
-    { id: 3, name: 'French fries' },
-    { id: 4, name: 'Garden salad' },
-    { id: 5, name: 'Mashed potatoes' },
-]
-
+import JetActionMessage from '@/Jetstream/ActionMessage.vue';
 </script>
 <script>
 export default {
@@ -59,6 +14,7 @@ export default {
         errors: Object,
         treatments: Object,
         timeslots: Object,
+        appointments: Object
     },
     mounted() {
         this.IncreseTime();
@@ -68,9 +24,9 @@ export default {
             form: this.$inertia.form({
                 _method: 'post',
                 date: null,
-                treatment: null,
+                treatment_id: null,
                 has_haircut: true,
-                timeslot: null,
+                timeslot_id: null,
 
             }),
             toggleModal: false,
@@ -79,43 +35,49 @@ export default {
             offer: null,
             cheked: false,
             minutes: 0,
-            actual_timeslots:[]
+            actual_timeslots: []
         };
     },
     methods: {
         store() {
-            this.form.post('/posts');
+            this.form.post('/appointments');
+            this.form.reset();
         },
         ShowDescription(treatment_id) {
             let treatment = _.find(this.treatments, { 'id': treatment_id });
-
             this.treatment_title = treatment.name;
             this.treatment_desciption = treatment.description;
             this.toggleModal = true;
         },
-        IncreseTime(){
+        IncreseTime() {
             this.minutes = 0;
 
-            if (this.form.treatment != null) {
+            if (this.form.treatment_id != null) {
                 this.minutes += 120;
-            } 
-            
-            if(this.form.has_haircut == true){
-                this.minutes += 60;
             }
 
+            if (this.form.has_haircut == true) {
+                this.minutes += 60;
+            }
+            // console.log(this.minutes);
             this.showTimeslots();
         },
         showTimeslots() {
-            //this.actual_timeslots = _.findIndex(this.timeslots, function(o) { return o.minutes == this.minutes; });
-        }   
+            let actual_minutes = this.minutes;
+            this.actual_timeslots = _.filter(this.timeslots, function (o) { return o.duration == actual_minutes; });
+        }, 
+        destroy(appointment_id) {
+            if (confirm('¿Estas seguro de que quieres cancelar esta cita?')) {
+                this.$inertia.delete('/appointments/' + appointment_id);
+            }
+        },
     }
 };
 </script>
 
 <template>
     <AppointmentLayout>
-        <div class="flex h-full w-full flex-col">
+        <div class="flex h-[73rem] w-full flex-col">
             <!-- <header
                 class="relative z-20 flex flex-none items-center justify-between border-b border-gray-200 py-4 px-6">
                 <div class="flex items-center">
@@ -128,48 +90,23 @@ export default {
                             <h2 class="text-2xl font-semibold text-gray-900 pt-2 border-gray-100 border-b-2">Proximas
                                 citas</h2>
                         </center>
-                        <ol class="mt-4 space-y-1 text-sm leading-6 text-gray-500 md:px-14">
-                            <li v-for="meeting in meetings" :key="meeting.id"
+                        <ol class="mt-4 space-y-1 text-sm leading-6 text-gray-500 md:px-14 overflow-auto">
+                            <li v-for="appointment in appointments" :key="appointment.id"
                                 class="group flex items-center space-x-4 rounded-xl py-2 px-4 focus-within:bg-gray-100 bg-gray-100 hover:bg-gray-50">
-                                <img :src="meeting.imageUrl" alt="" class="h-10 w-10 flex-none rounded-full" />
+                                <img :src="$page.props.user.profile_photo_url" alt=""
+                                    class="h-10 w-10 flex-none rounded-full" />
                                 <div class="flex-auto">
-                                    <p class="text-gray-900">{{ meeting.name }}</p>
+                                    <p class="text-gray-900">{{ appointment.name }}</p>
                                     <p class="mt-0.5">
-                                        <time :datetime="meeting.startDatetime">{{ meeting.start }}</time> -
-                                        <time :datetime="meeting.endDatetime">{{ meeting.end }}</time>
+                                        <time :datetime="appointment.start_time">{{ appointment.start_time }}</time> -
+                                        <time :datetime="appointment.end_time">{{ appointment.end_time }}</time>
+                                        <br>
+                                        <date class="font-semibold">{{ appointment.date }}</date>
                                     </p>
                                 </div>
-                                <Menu as="div"
-                                    class="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100">
-                                    <div>
-                                        <MenuButton
-                                            class="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
-                                            <span class="sr-only">Open options</span>
-                                            <DotsVerticalIcon class="h-6 w-6" aria-hidden="true" />
-                                        </MenuButton>
-                                    </div>
-
-                                    <transition enter-active-class="transition ease-out duration-100"
-                                        enter-from-class="transform opacity-0 scale-95"
-                                        enter-to-class="transform opacity-100 scale-100"
-                                        leave-active-class="transition ease-in duration-75"
-                                        leave-from-class="transform opacity-100 scale-100"
-                                        leave-to-class="transform opacity-0 scale-95">
-                                        <MenuItems
-                                            class="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <div class="py-1">
-                                                <MenuItem v-slot="{ active }">
-                                                <a href="#"
-                                                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Edit</a>
-                                                </MenuItem>
-                                                <MenuItem v-slot="{ active }">
-                                                <a href="#"
-                                                    :class="[active ? 'bg-gray-100 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Cancel</a>
-                                                </MenuItem>
-                                            </div>
-                                        </MenuItems>
-                                    </transition>
-                                </Menu>
+                                <button @click="destroy(appointment.id)" class="hover:bg-[#BF0000] p-3 font-extrabold text-black bg-[#FA0000] rounded-lg">
+                                    cancelar
+                                </button>
                             </li>
                         </ol>
                     </section>
@@ -185,6 +122,8 @@ export default {
                                 <legend>Día</legend>
                                 <input type="date" v-model="form.date" class="rounded-lg bg-gray-100 border-none p-3">
                             </center>
+                            <div class="text-red-600" v-if="errors.date">{{ errors.date }}</div>
+
                             <hr>
                             <fieldset>
                                 <center>
@@ -197,8 +136,9 @@ export default {
                                             <label :for="treatment.id" class="font-medium text-gray-700 select-none">{{
                                                     treatment.name
                                             }}</label>
-                                            <input :id="treatment.id" @change="IncreseTime()" v-model="form.treatment"
-                                                name="treatment" type="radio" :checked="treatment.id === null"
+                                            <input :id="treatment.id" @change="IncreseTime()"
+                                                v-model="form.treatment_id" name="treatment" :value="treatment.id"
+                                                type="radio" :checked="treatment.id === null"
                                                 class="focus:ring-gray-900 h-4 w-4 text-gray-900 border-gray-900 ml-2" />
                                         </div>
                                         <button @click="ShowDescription(treatment.id)" type="button">
@@ -215,6 +155,7 @@ export default {
                                         :toggleModal="toggleModal" @close="toggleModal = false"></ModalInfo>
                                 </div>
                             </fieldset>
+                            <div class="text-red-600" v-if="errors.treatment">{{ errors.treatment }}</div>
                             <hr>
                             <fieldset>
                                 <center>
@@ -222,16 +163,19 @@ export default {
                                 </center>
                                 <div>
                                     <input type="radio" class="checked:bg-gray-900 focus:ring-gray-900 text-gray-900"
-                                        id="si" name="opcion" v-model="form.has_haircut" :value="true" @change="IncreseTime()" checked>
+                                        id="si" name="opcion" v-model="form.has_haircut" :value="true"
+                                        @change="IncreseTime()" checked>
                                     <label class="ml-2" for="si">si</label>
                                 </div>
 
                                 <div>
                                     <input type="radio" class="checked:bg-gray-900 focus:ring-gray-900 text-gray-900"
-                                        id="no" name="opcion" v-model="form.has_haircut" @change="IncreseTime()" :value="false">
+                                        id="no" name="opcion" v-model="form.has_haircut" @change="IncreseTime()"
+                                        :value="false">
                                     <label class="ml-2" for="no">no</label>
                                 </div>
                             </fieldset>
+                            <div class="text-red-600" v-if="errors.has_haircut">{{ errors.has_haircut }}</div>
                             <hr>
                             <div>
                                 <div>
@@ -239,12 +183,12 @@ export default {
                                         <h2>Horas disponibles</h2>
                                     </center>
                                     <div>
-                                        <RadioGroup v-model="mem" class="mt-2">
+                                        <RadioGroup v-model="form.timeslot_id" class="mt-2">
                                             <RadioGroupLabel class="sr-only"> Choose a memory option </RadioGroupLabel>
                                             <div class="grid grid-cols-3 gap-3 sm:grid-cols-6 place-items-center">
                                                 <RadioGroupOption as="template" v-for="timeslot in actual_timeslots"
-                                                    :key="timeslot.id" :value="timeslot" :disabled="!timeslot.is_active"
-                                                    v-slot="{ active, checked }">
+                                                    :key="timeslot.id" :value="timeslot.id"
+                                                    :disabled="!timeslot.is_active" v-slot="{ active, checked }">
                                                     <div
                                                         :class="[timeslot.is_active ? 'cursor-pointer focus:outline-none' : 'opacity-25 cursor-not-allowed', active ? 'ring-2 ring-offset-2 ring-gray-700' : '', checked ? 'bg-gray-700 border-transparent text-white hover:bg-gray-600' : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-600 hover:text-white', 'border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1']">
                                                         <RadioGroupLabel as="span">
@@ -257,9 +201,13 @@ export default {
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-red-600" v-if="errors.timeslot_id">{{ errors.timeslot_id }}</div>
                             <hr>
-                            <center><button type="submit" @click="showMinutes()"
+                            <center><button type="submit"
                                     class="inline-flex mt-20 items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">Solicitar</button>
+                                <JetActionMessage :on="form.recentlySuccessful" class="mt-3 text-lg">
+                                    La cita se ha solicitado correctamente.
+                                </JetActionMessage>
                             </center>
                         </form>
                     </section>

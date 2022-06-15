@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('timeslots_id')->constrained();
-            $table->boolean('has_haicut')->default(false);
+            $table->foreignId('timeslot_id')->constrained();
+            $table->date('date');
+            $table->boolean('has_haircut')->default(false);
             // $table->dateTime('start_at');
             // $table->dateTime('finish_at');
             $table->timestamps();

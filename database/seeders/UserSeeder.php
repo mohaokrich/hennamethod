@@ -35,6 +35,14 @@ class UserSeeder extends Seeder
                 'email' => 'mohadmin@edatta.com',
                 'is_admin' => true,
             ],
+            [
+                'name' => 'Raul',
+                'last_name' => 'gONZALEZ',
+                'password' => bcrypt('raul'),
+                'phone' => '678258010',
+                'email' => 'raul@edatta.com',
+                'is_admin' => false,
+            ],
         ];
 
         User::insert($users);
