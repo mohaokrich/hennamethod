@@ -1,7 +1,8 @@
 <script setup>
 import FaqsLayout from '@/Pages/Public/faqs/FaqsLayout.vue'
 import { Link } from '@inertiajs/inertia-vue3';
-import ModalInfo from './modalInfo.vue';
+import ModalInfo from '@/Jetstream/ModalInfo.vue';
+
 
 const questions = [
   {

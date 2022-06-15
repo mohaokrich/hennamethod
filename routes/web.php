@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::get('/tratamiento-ghassoul', function () {
     return Inertia::render('Public/treatments/tratamiento-ghassoul');
 })->name('treatments.ghassoul');
 
-Route::get('/blog', [PostController::class, 'showPosts'])->name('blog');
+Route::get('/blog', [PostController::class, 'getPostList'])->name('blog');
 
 Route::get('/nosotros', function () {
     return Inertia::render('Public/us/index');
@@ -64,15 +65,16 @@ Route::get('/aviso-legal', function () {
 
 
 /* USER ZONE */
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('Public/home/Welcome');
-//     })->name('dashboard');
-// });
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    // 'verified',
+])->group(function () {
+    // Route::get('/user-appoinment', function () {
+    //     return Inertia::render('User/appointments/index');
+    // })->name('appointment.user');
+    Route::resource('appointments', AppointmentController::class);
+});
 
 /* ADMIN ZONE */
 Route::middleware([
@@ -81,18 +83,13 @@ Route::middleware([
     'verified',
     'isAdmin',
 ])->group(function () {
-    /*Route::get('/blog-managment', function () {
-        return Inertia::render('Admin/blog/index');
-    })->name('blog.admin');
-    Route::get('/blog-post', function () {
-        return Inertia::render('Admin/blog/crear-post');
-    })->name('blog-post.admin');*/
-
     Route::resource('posts', PostController::class);
 
     Route::get('/treatments-managment', function () {
         return Inertia::render('Admin/treatments/index');
     })->name('treatments.admin');
+
 });
 
 Route::get('/{slug}', showPostInBlogController::class)->name('blog.show-post');
+

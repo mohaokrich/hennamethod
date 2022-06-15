@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('start_time');
             $table->string('end_time');
+            $table->integer('duration');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

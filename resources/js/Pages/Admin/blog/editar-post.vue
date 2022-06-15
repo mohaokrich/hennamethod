@@ -9,27 +9,29 @@ const people = [
 
 <script>
 export default {
-    name: "crear-post",
+    name: "editar-post",
     props: {
         errors: Object,
+        post: Object,
     },
+    remember: 'form',
     data() {
         return {
             form: this.$inertia.form({
-                _method: 'post',
-                title: null,
-                title_slug: null,
-                body: null,
-                author: null,
-                post_creation: null,
+                _method: 'put',
+                title: this.post.title,
+                title_slug: this.post.title_slug,
+                body: this.post.body,
+                author: this.post.author,
+                post_creation: this.post.post_creation,
                 photo: null,
-                excerpt: null,
+                excerpt: this.post.excerpt,
             }),
         };
     },
     methods: {
-        store() {
-            this.form.post('/posts');
+        update() {
+            this.form.put('/posts/' + this.post.id);
         },
     }
 };
@@ -40,15 +42,15 @@ export default {
     <AdminLayout>
         <div class="py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <form @submit.prevent="store" class="space-y-8 divide-y divide-gray-200">
+                <form @submit.prevent="update" class="space-y-8 divide-y divide-gray-200">
                     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                         <div>
                             <div>
                                 <center>
-                                    <h3 class="text-2xl leading-6 font-medium text-gray-900">Crear post</h3>
+                                    <h3 class="text-2xl leading-6 font-medium text-gray-900">Editar post</h3>
                                 </center>
                                 <center>
-                                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Aquí podras crear tus posts.</p>
+                                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Aquí podras editar tus posts.</p>
                                 </center>
                             </div>
 
@@ -140,7 +142,7 @@ export default {
                                                 <div class="flex text-sm text-gray-600">
                                                     <label for="file-upload"
                                                         class="relative cursor-pointer bg-white rounded-md text-black font-extrabold hover:text-gray-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-gray-500">
-                                                        <input id="file-upload"
+                                                        <input id="file-upload" @change="form.photo"
                                                             @input="form.photo = $event.target.files[0]" name="photo"
                                                             type="file" />
                                                     </label>
@@ -171,8 +173,8 @@ export default {
                     <div class="pt-5">
                         <div class="flex justify-end">
                             <Link :href="route('posts.index')">
-                            <button type="button"
-                                class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Cancelar</button>
+                                <button type="button"
+                                    class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Cancelar</button>
                             </Link>
                             <button type="submit"
                                 class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Guardar</button>
